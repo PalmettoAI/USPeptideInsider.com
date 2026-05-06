@@ -208,3 +208,53 @@
     trackEvent('letter_view', meta);
   }
 })();
+
+/* ───── Cookie consent (subtle, single decision) ───── */
+(function () {
+  if (typeof document === 'undefined') return;
+  var key = 'upi-consent-v1';
+  if (localStorage.getItem(key)) return;
+
+  var bar = document.createElement('div');
+  bar.className = 'cookie-consent';
+  bar.setAttribute('role', 'region');
+  bar.setAttribute('aria-label', 'Cookie notice');
+  bar.innerHTML =
+    '<div class="cookie-consent__inner">' +
+      '<p class="cookie-consent__text">We use Google Analytics to understand which letters get read. No email collection, no advertising pixels. <a href="/privacy.html">Read our privacy policy</a>.</p>' +
+      '<button type="button" class="cookie-consent__btn" data-cookie-accept>Got it</button>' +
+    '</div>';
+  document.body.appendChild(bar);
+  requestAnimationFrame(function () { bar.classList.add('is-visible'); });
+
+  bar.querySelector('[data-cookie-accept]').addEventListener('click', function () {
+    localStorage.setItem(key, '1');
+    bar.classList.remove('is-visible');
+    setTimeout(function () { bar.remove(); }, 200);
+  });
+})();
+
+/* ───── Cookie consent (subtle, single decision) ───── */
+(function () {
+  if (typeof document === 'undefined') return;
+  var key = 'upi-consent-v1';
+  if (localStorage.getItem(key)) return;
+
+  var bar = document.createElement('div');
+  bar.className = 'cookie-consent';
+  bar.setAttribute('role', 'region');
+  bar.setAttribute('aria-label', 'Cookie notice');
+  bar.innerHTML =
+    '<div class="cookie-consent__inner">' +
+      '<p class="cookie-consent__text">We use Google Analytics to understand which letters get read. No email collection, no advertising pixels. <a href="/privacy.html">Read our privacy policy</a>.</p>' +
+      '<button type="button" class="cookie-consent__btn" data-cookie-accept>Got it</button>' +
+    '</div>';
+  document.body.appendChild(bar);
+  requestAnimationFrame(function () { bar.classList.add('is-visible'); });
+
+  bar.querySelector('[data-cookie-accept]').addEventListener('click', function () {
+    localStorage.setItem(key, '1');
+    bar.classList.remove('is-visible');
+    setTimeout(function () { bar.remove(); }, 200);
+  });
+})();
